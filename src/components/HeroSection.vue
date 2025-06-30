@@ -2,7 +2,7 @@
   <section class="relative flex items-center justify-center min-h-screen w-full overflow-hidden">
     <!-- Vidéo de fond -->
     <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover z-0">
-      <source src="@/assets/videos/Karl_Tourelle_Render_03.mp4" type="video/mp4" />
+      <source :src="heroVideo" type="video/mp4" />
       Votre navigateur ne supporte pas la vidéo HTML5.
     </video>
     <!-- Overlay sombre -->
@@ -26,6 +26,9 @@ import { ref, onMounted } from 'vue';
 import { gsap } from 'gsap';
 
 const isShrunk = ref(false);
+
+// Import dynamique du chemin vidéo pour compatibilité Vite
+const heroVideo = new URL('@/assets/videos/Karl_Tourelle_Render_03.mp4', import.meta.url).href;
 
 onMounted(() => {
   setTimeout(() => {

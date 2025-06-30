@@ -1,3 +1,18 @@
+<template>
+  <div class="min-h-screen bg-white font-sans flex flex-col items-center relative">
+    <ProgressBar />
+    <template v-if="$route.path === '/'">
+      <HeroSection />
+      <AboutSection />
+      <WorkSection />
+      <ContactSection />
+    </template>
+    <template v-else>
+      <router-view />
+    </template>
+  </div>
+</template>
+
 <script setup>
 import { onMounted } from 'vue';
 import { gsap } from 'gsap';
@@ -23,16 +38,6 @@ onMounted(() => {
   });
 });
 </script>
-
-<template>
-  <div class="min-h-screen bg-white font-sans flex flex-col items-center relative">
-    <ProgressBar />
-    <HeroSection />
-    <AboutSection />
-    <WorkSection />
-    <ContactSection />
-  </div>
-</template>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
